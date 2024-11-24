@@ -5,15 +5,102 @@
 <h1>Hello, world!</h1>
 
 <div class="main-square">
-    <div id="square1"></div>
-    <div id="square2"></div>
-    <div id="square3"></div>
+    <div id="square1" class="@(s1 ? openClass: closedClass)" @onclick="click1"></div>
+    <div id="square2" class="@(s2 ? openClass: closedClass)" @onclick="click2"></div>
+    <div id="square3" class="@(s3 ? openClass: closedClass)" @onclick="click3"></div>
 
-    <div id="square4"></div>
-    <div id="square5"></div>
-    <div id="square6"></div>
+    <div id="square4" class="@(s4 ? openClass: closedClass)" @onclick="click4"></div>
+    <div id="square5" class="@(s5 ? openClass: closedClass)" @onclick="click5"></div>
+    <div id="square6" class="@(s6 ? openClass: closedClass)" @onclick="click6"></div>
 
-    <div id="square7"></div>
-    <div id="square8"></div>
-    <div id="square9"></div>
+    <div id="square7" class="@(s7 ? openClass: closedClass)" @onclick="click7"></div>
+    <div id="square8" class="@(s8 ? openClass: closedClass)" @onclick="click8"></div>
+    <div id="square9" class="@(s9 ? openClass: closedClass)" @onclick="click9"></div>
 </div>
+
+@code {
+    private bool s1;
+    private bool s2;
+    private bool s3;
+
+    private bool s4; private bool s5; private bool s6;
+
+    private bool s7; private bool s8; private bool s9;
+
+    private const string closedClass = "closed";
+    private const string openClass = "open";
+
+    private void click1()
+    {
+        s1 = !s1;
+        s2 = !s2;
+        s4 = !s4;
+        s5 = !s5;
+    }
+
+    private void click2()
+    {
+        s1 = !s1;
+        s2 = !s2;
+        s3 = !s3;
+    }
+
+    private void click3()
+    {
+        s2 = !s2;
+        s3 = !s3;
+        s5 = !s5;
+        s6 = !s6;
+    }
+
+
+    private void click4()
+    {
+        s1 = !s1;
+        s4 = !s4;
+        s7 = !s7;
+
+    }
+
+    private void click5()
+    {
+        s2 = !s2;
+        s4 = !s4;
+        s5 = !s5;
+        s6 = !s6;
+        s8 = !s8;
+
+    }
+
+    private void click6()
+    {
+        s3 = !s3;
+        s6 = !s6;
+        s9 = !s9;
+    }
+
+
+    private void click7()
+    {
+        s4 = !s4;
+        s5 = !s5;
+        s7 = !s7;
+        s8 = !s8;
+    }
+
+    private void click8()
+    {
+        s7 = !s7;
+        s8 = !s8;
+        s9 = !s9;
+    }
+
+    private void click9()
+    {
+        s5 = !s5;
+        s6 = !s6;
+        s8 = !s8;
+        s9 = !s9;
+    }
+
+}
