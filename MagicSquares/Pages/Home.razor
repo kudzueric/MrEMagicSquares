@@ -2,7 +2,12 @@
 
 <PageTitle>Mr E Magic Squares</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>Clear the squares</h1>
+<p>Moves: @moveCount</p>
+@if (solved)
+{
+    <p>You did it!</p>
+}
 
 <div class="main-square">
     <div id="square1" class="@(s1 ? openClass: closedClass)" @onclick="click1"></div>
@@ -19,6 +24,9 @@
 </div>
 
 @code {
+    private int moveCount = 0;
+    private bool solved => s1 && s2 && s3 && s4 && s5 && s6 && s7 & s8 && s9;
+
     private bool s1;
     private bool s2;
     private bool s3;
@@ -36,6 +44,7 @@
         s2 = !s2;
         s4 = !s4;
         s5 = !s5;
+        moveCount++;
     }
 
     private void click2()
@@ -43,6 +52,7 @@
         s1 = !s1;
         s2 = !s2;
         s3 = !s3;
+        moveCount++;
     }
 
     private void click3()
@@ -51,6 +61,7 @@
         s3 = !s3;
         s5 = !s5;
         s6 = !s6;
+        moveCount++;
     }
 
 
@@ -59,6 +70,7 @@
         s1 = !s1;
         s4 = !s4;
         s7 = !s7;
+        moveCount++;
 
     }
 
@@ -69,6 +81,7 @@
         s5 = !s5;
         s6 = !s6;
         s8 = !s8;
+        moveCount++;
 
     }
 
@@ -77,6 +90,7 @@
         s3 = !s3;
         s6 = !s6;
         s9 = !s9;
+        moveCount++;
     }
 
 
@@ -86,6 +100,7 @@
         s5 = !s5;
         s7 = !s7;
         s8 = !s8;
+        moveCount++;
     }
 
     private void click8()
@@ -93,14 +108,17 @@
         s7 = !s7;
         s8 = !s8;
         s9 = !s9;
+        moveCount++;
     }
 
     private void click9()
     {
+
         s5 = !s5;
         s6 = !s6;
         s8 = !s8;
         s9 = !s9;
+        moveCount++;
     }
 
 }
