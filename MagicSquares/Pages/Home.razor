@@ -2,8 +2,12 @@
 
 <PageTitle>Mr E Magic Squares</PageTitle>
 
-<h1>Clear the squares</h1>
-<p>Moves: @moveCount</p>
+<h1>Clear the squares.</h1>
+<p>Moves: @moveCount.</p>
+@if (!playing)
+{
+    <p>Click anywhere to start.</p>
+}
 @if (solved)
 {
     <p>You did it!</p>
@@ -26,6 +30,8 @@
 @code {
     private int moveCount = 0;
     private bool solved => s1 && s2 && s3 && s4 && s5 && s6 && s7 & s8 && s9;
+    private bool playing = false;
+
 
     private bool s1;
     private bool s2;
@@ -38,8 +44,36 @@
     private const string closedClass = "closed";
     private const string openClass = "open";
 
+    private Random Random = new Random();
+
+    private bool randomStart()
+    {
+        return Random.Next(2) == 0;
+    }
+
+    private void startGame()
+    {
+        if (!playing)
+        {
+            moveCount = 0;
+            playing = true;
+            s1 = randomStart();
+            s2 = randomStart();
+            s3 = randomStart();
+
+            s4 = randomStart();
+            s5 = randomStart();
+            s6 = randomStart();
+
+            s7 = randomStart();
+            s8 = randomStart();
+            s9 = randomStart();
+        }
+    }
+
     private void click1()
     {
+        startGame();
         s1 = !s1;
         s2 = !s2;
         s4 = !s4;
@@ -49,6 +83,7 @@
 
     private void click2()
     {
+        startGame();
         s1 = !s1;
         s2 = !s2;
         s3 = !s3;
@@ -57,6 +92,7 @@
 
     private void click3()
     {
+        startGame();
         s2 = !s2;
         s3 = !s3;
         s5 = !s5;
@@ -67,6 +103,7 @@
 
     private void click4()
     {
+        startGame();
         s1 = !s1;
         s4 = !s4;
         s7 = !s7;
@@ -76,6 +113,7 @@
 
     private void click5()
     {
+        startGame();
         s2 = !s2;
         s4 = !s4;
         s5 = !s5;
@@ -87,6 +125,7 @@
 
     private void click6()
     {
+        startGame();
         s3 = !s3;
         s6 = !s6;
         s9 = !s9;
@@ -96,6 +135,7 @@
 
     private void click7()
     {
+        startGame();
         s4 = !s4;
         s5 = !s5;
         s7 = !s7;
@@ -105,6 +145,7 @@
 
     private void click8()
     {
+        startGame();
         s7 = !s7;
         s8 = !s8;
         s9 = !s9;
@@ -113,7 +154,7 @@
 
     private void click9()
     {
-
+        startGame();
         s5 = !s5;
         s6 = !s6;
         s8 = !s8;
