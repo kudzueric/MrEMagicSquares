@@ -4,9 +4,9 @@
 
 <h1>Clear the squares.</h1>
 <p>Moves: @moveCount.</p>
-@if (!playing)
+@if (!playing || solved)
 {
-    <p>Click anywhere to start.</p>
+    <button class="btn btn-primary" @onclick="startGame">Start Game</button>
 }
 @if (solved)
 {
@@ -14,17 +14,19 @@
 }
 
 <div class="main-square">
-    <div id="square1" class="@(s1 ? openClass: closedClass)" @onclick="click1"></div>
-    <div id="square2" class="@(s2 ? openClass: closedClass)" @onclick="click2"></div>
-    <div id="square3" class="@(s3 ? openClass: closedClass)" @onclick="click3"></div>
+    @if (!solved)
+    {
+        <div id="square1" class="@(s1 ? openClass: closedClass)" @onclick="click1"></div>
+        <div id="square2" class="@(s2 ? openClass: closedClass)" @onclick="click2"></div>
+        <div id="square3" class="@(s3 ? openClass: closedClass)" @onclick="click3"></div>
+        <div id="square4" class="@(s4 ? openClass: closedClass)" @onclick="click4"></div>
+        <div id="square5" class="@(s5 ? openClass: closedClass)" @onclick="click5"></div>
+        <div id="square6" class="@(s6 ? openClass: closedClass)" @onclick="click6"></div>
 
-    <div id="square4" class="@(s4 ? openClass: closedClass)" @onclick="click4"></div>
-    <div id="square5" class="@(s5 ? openClass: closedClass)" @onclick="click5"></div>
-    <div id="square6" class="@(s6 ? openClass: closedClass)" @onclick="click6"></div>
-
-    <div id="square7" class="@(s7 ? openClass: closedClass)" @onclick="click7"></div>
-    <div id="square8" class="@(s8 ? openClass: closedClass)" @onclick="click8"></div>
-    <div id="square9" class="@(s9 ? openClass: closedClass)" @onclick="click9"></div>
+        <div id="square7" class="@(s7 ? openClass: closedClass)" @onclick="click7"></div>
+        <div id="square8" class="@(s8 ? openClass: closedClass)" @onclick="click8"></div>
+        <div id="square9" class="@(s9 ? openClass: closedClass)" @onclick="click9"></div>
+    }
 </div>
 
 @code {
@@ -53,113 +55,129 @@
 
     private void startGame()
     {
-        if (!playing)
-        {
-            moveCount = 0;
-            playing = true;
-            s1 = randomStart();
-            s2 = randomStart();
-            s3 = randomStart();
 
-            s4 = randomStart();
-            s5 = randomStart();
-            s6 = randomStart();
+        moveCount = 0;
+        playing = true;
+        s1 = randomStart();
+        s2 = randomStart();
+        s3 = randomStart();
 
-            s7 = randomStart();
-            s8 = randomStart();
-            s9 = randomStart();
-        }
+        s4 = randomStart();
+        s5 = randomStart();
+        s6 = randomStart();
+
+        s7 = randomStart();
+        s8 = randomStart();
+        s9 = randomStart();
+
     }
 
     private void click1()
     {
-        startGame();
-        s1 = !s1;
-        s2 = !s2;
-        s4 = !s4;
-        s5 = !s5;
-        moveCount++;
+        if (playing)
+        {
+            s1 = !s1;
+            s2 = !s2;
+            s4 = !s4;
+            s5 = !s5;
+            moveCount++;
+        }
     }
 
     private void click2()
     {
-        startGame();
-        s1 = !s1;
-        s2 = !s2;
-        s3 = !s3;
-        moveCount++;
+        if (playing)
+        {
+            s1 = !s1;
+            s2 = !s2;
+            s3 = !s3;
+            moveCount++;
+        }
     }
 
     private void click3()
     {
-        startGame();
-        s2 = !s2;
-        s3 = !s3;
-        s5 = !s5;
-        s6 = !s6;
-        moveCount++;
+        if (playing)
+        {
+            s2 = !s2;
+            s3 = !s3;
+            s5 = !s5;
+            s6 = !s6;
+            moveCount++;
+        }
     }
 
 
     private void click4()
     {
-        startGame();
-        s1 = !s1;
-        s4 = !s4;
-        s7 = !s7;
-        moveCount++;
-
+        if (playing)
+        {
+            s1 = !s1;
+            s4 = !s4;
+            s7 = !s7;
+            moveCount++;
+        }
     }
 
     private void click5()
     {
-        startGame();
-        s2 = !s2;
-        s4 = !s4;
-        s5 = !s5;
-        s6 = !s6;
-        s8 = !s8;
-        moveCount++;
+        if (playing)
+        {
+            s2 = !s2;
+            s4 = !s4;
+            s5 = !s5;
+            s6 = !s6;
+            s8 = !s8;
+            moveCount++;
+        }
 
     }
 
     private void click6()
     {
-        startGame();
-        s3 = !s3;
-        s6 = !s6;
-        s9 = !s9;
-        moveCount++;
+        if (playing)
+        {
+            s3 = !s3;
+            s6 = !s6;
+            s9 = !s9;
+            moveCount++;
+        }
     }
 
 
     private void click7()
     {
-        startGame();
-        s4 = !s4;
-        s5 = !s5;
-        s7 = !s7;
-        s8 = !s8;
-        moveCount++;
+        if (playing)
+        {
+            s4 = !s4;
+            s5 = !s5;
+            s7 = !s7;
+            s8 = !s8;
+            moveCount++;
+        }
     }
 
     private void click8()
     {
-        startGame();
-        s7 = !s7;
-        s8 = !s8;
-        s9 = !s9;
-        moveCount++;
+        if (playing)
+        {
+            s7 = !s7;
+            s8 = !s8;
+            s9 = !s9;
+            moveCount++;
+        }
     }
 
     private void click9()
     {
-        startGame();
-        s5 = !s5;
-        s6 = !s6;
-        s8 = !s8;
-        s9 = !s9;
-        moveCount++;
+        if (playing)
+        {
+            s5 = !s5;
+            s6 = !s6;
+            s8 = !s8;
+            s9 = !s9;
+            moveCount++;
+        }
     }
 
 }

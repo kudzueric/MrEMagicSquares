@@ -20,16 +20,25 @@
 
 }
 
+.main-square div.open {
+    background-color: #00000038;
+
+}
 
 
 @media (min-width: 641px) {
     .main-square {
-        width: min(50vw, 50vh);
-        height: min(50vw, 50vh);
+        min-width: 250px;
+        min-height: 250px;
+        width: min(80vw, 80vh);
+        height: min(80vw, 80vh);
     }
 
     .main-square div {
-        width: calc(min(50vw, 50vh)/3);
-        height: calc(min(50vw, 50vh)/3);
+        min-width: calc(250px/3);
+        min-height: calc(250px/3);
+        width: calc(min(80vw, 80vh)/3);
+        height: calc(min(80vw, 80vh)/3);
+
     }
 }
