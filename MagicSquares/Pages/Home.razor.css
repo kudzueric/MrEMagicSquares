@@ -2,6 +2,9 @@
     width: min(90vw, 90vh);
     height: min(90vw, 90vh);
     background-color: antiquewhite;
+    background-image: url("./images/bull_8322071309_o.jpg");
+    background-position: center;
+    background-size: stretch;
     padding: 0;
     padding: 0;
     margin: 0;
